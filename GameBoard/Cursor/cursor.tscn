@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0uf8y832ggi3"]
+
+[ext_resource type="Script" path="res://GameBoard/Cursor/cursor.gd" id="1_q6ak6"]
+[ext_resource type="Texture2D" uid="uid://r4osua4y8lx5" path="res://GameBoard/Cursor/menu_selection_arrow.png" id="2_0meyr"]
+
+[node name="Cursor" type="Node2D"]
+script = ExtResource("1_q6ak6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(42, -42)
+rotation = 2.35619
+texture = ExtResource("2_0meyr")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true

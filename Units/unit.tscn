@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://bc4c300chj051"]
+
+[ext_resource type="Script" path="res://Units/unit.gd" id="1_ptphm"]
+[ext_resource type="Texture2D" uid="uid://cgx18rhhd4oqm" path="res://Units/unit_shadow.svg" id="2_kbrrt"]
+
+[sub_resource type="Animation" id="Animation_3fn51"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D/Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_n8plj"]
+resource_name = "selected"
+length = 1.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PathFollow2D/Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1.5, 1.5, 1.5, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dk3ej"]
+_data = {
+"idle": SubResource("Animation_3fn51"),
+"selected": SubResource("Animation_n8plj")
+}
+
+[node name="Unit" type="Path2D"]
+script = ExtResource("1_ptphm")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+unique_name_in_owner = true
+rotates = false
+loop = false
+
+[node name="Shadow" type="Sprite2D" parent="PathFollow2D"]
+modulate = Color(0.10208, 0.11, 0.0902, 0.329412)
+position = Vector2(0, 23)
+texture = ExtResource("2_kbrrt")
+
+[node name="Sprite" type="Sprite2D" parent="PathFollow2D"]
+unique_name_in_owner = true
+position = Vector2(0, 23)
+scale = Vector2(0.25, 0.25)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_dk3ej")
+}

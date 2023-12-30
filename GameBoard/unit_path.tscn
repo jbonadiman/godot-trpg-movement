@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://blxfhtcybo5mt"]
+
+[ext_resource type="TileSet" uid="uid://f5jctpqs0gh1" path="res://GameBoard/unit_path_tileset.tres" id="1_bnhpo"]
+[ext_resource type="Script" path="res://GameBoard/unit_path.gd" id="2_o8g34"]
+[ext_resource type="Resource" uid="uid://2kpmnbpd7h3m" path="res://GameBoard/grid.tres" id="3_sl7q1"]
+
+[node name="UnitPath" type="TileMap"]
+tile_set = ExtResource("1_bnhpo")
+format = 2
+script = ExtResource("2_o8g34")
+grid = ExtResource("3_sl7q1")
